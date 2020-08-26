@@ -1,8 +1,11 @@
 import React from 'react';
+import NewButton from './components/testButton';
 
 function App() {
   return (
-    <div>Hello World!</div>
+    <>
+      <NewButton></NewButton>
+    </>
   );
 }
 
