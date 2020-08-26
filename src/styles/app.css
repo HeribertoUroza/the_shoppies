@@ -1,0 +1,13 @@
+/* SEARCH BAR COMPONENT*/
+body {
+    margin: 0%;
+}
+
+.search-bar {
+    width: 77%;
+    margin-top: 2%;
+}
+
+.search-btn {
+    margin-top: 2%;
+}
