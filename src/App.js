@@ -1,10 +1,15 @@
 import React from 'react';
-import NewButton from './components/testButton';
+
+// CONTAINERS
+import SearchBar from './containers/SearchBar';
+
+// CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <>
-      <NewButton></NewButton>
+      <SearchBar />
     </>
   );
 }
