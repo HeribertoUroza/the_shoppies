@@ -1,11 +1,17 @@
 import React from 'react';
+
+// BOOTSTRAP IMPORTS
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
+// API CALL
+import getAPIdata from '../api/OMDB';
+
 function SearchBar() {
+    getAPIdata('rambo')
     return (
         <Jumbotron fluid>
             <Container>
