@@ -6,7 +6,8 @@ const getAPIdata = ( query ) => {
         method: 'GET',
         url: `http://www.omdbapi.com/?apikey=${apikey.omdb_key}&t=${query}`
     }).then( res => {
-        console.log(res.data)
+        // console.log(`${res.data.Title} (${res.data.Year})`)
+
     }).catch( error => {
         console.log(error)
     })
