@@ -1,29 +1,27 @@
-import React, { useContext, } from 'react';
-
-import ResultContext from '../context/ResultsContext';
+import React, { useContext, useState, useEffect } from 'react';
+import currentResults from '../context/ResultsContext';
 
 
 function ResultsSection() {
-    //let [ resultData, getResultData ] = useState([])
-    let currentResults = useContext(ResultContext)
+    // let [ resultData, getResultData ] = useState([])
 
-    function getContextData(){
-
-        return currentResults.results.map((e, i) => {
-            console.log(e)
-            return <h4>{e}</h4>
-        })
-    };
-
+    
     //getResultData(currentResults.results)
     // console.log('CR',currentResults.results)
-    // console.log('results',results)
+    useEffect( _=> {
+        console.log('results', currentResults)
+
+    })
+
     return (
         <>
             Results
-            {
-                getContextData()
-            }
+            {/* {
+                for(let currentResults in props){
+                    console.log(currentResults)
+                }
+            } */}
+            
         </>
     )
 };
