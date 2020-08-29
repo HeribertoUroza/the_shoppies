@@ -1,13 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import ResultsContext from '../context/ResultsContext';
 
 
 function ResultsSection() {
-    // let [ resultData, getResultData ] = useState([])
-
-    
-    //getResultData(currentResults.results)
-    
+    let [ resultData, getResultData ] = useState([])
+    // getResultData(ResultsContext.results)
+    // console.log(resultData)
     
 
     return (
@@ -16,19 +14,17 @@ function ResultsSection() {
             <ResultsContext.Consumer>
                 {
                     ({results})=> {
-                        console.log(results)
-                        results.map((e,i) => {
-                            return <h3>{e}</h3>
-                        })
+                        getResultData(results)
+                        if(resultData.length){
+                            resultData.map((e, i) => {
+                                return <h3>{e}</h3>
+                            })
+                        } else {
+                            return ""
+                        }
                     }
                 }
             </ResultsContext.Consumer>
-            {/* {
-                for(let currentResults in props){
-                    console.log(currentResults)
-                }
-            } */}
-            
         </>
     )
 };
