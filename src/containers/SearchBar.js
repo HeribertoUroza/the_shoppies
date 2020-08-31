@@ -6,27 +6,15 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 
-// API CALL
-import getAPIdata from '../api/OMDB';
 
 // CONTEXT
 import ResultsContext from '../context/ResultsContext';
 
-function SearchBar() {
-    const [ query, setQuery ] = useState('');
-    let currentResults = useContext(ResultsContext)
-    
-    function handleChange(e) {
+function SearchBar(props) {
+    const [ query, setQuery ] = useState('')
+    function handleChange(e){
         setQuery(e.target.value)
-
-        if (query.length < 1) return;
-        getAPIdata(query)
-            .then(res => {
-                if(!res.data.Title && !res.data.Year) return;
-                currentResults.results.push(`${res.data.Title} (${res.data.Year})`)
-            }).catch(error => {
-                console.log(error)
-            })
+        props.apiCall(e.target.value)
     }
     
     return (
