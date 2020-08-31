@@ -19,16 +19,16 @@ function App() {
   const [ preResults, setPreResults] = useState([])
 
   const apiCall = async (query) => {  
-  const res = await getAPIdata('s',query)
+  const apiSearchRes = await getAPIdata('s',query)
   
-  if((preResults.length > 0 && preResults === res.Search)) {
-    const getMovieTitle = await getAPIdata('t', query)
-    if(getMovieTitle.Title)
-    getResults(getMovieTitle)
+  if((preResults.length > 0 && preResults === apiSearchRes.Search)) {
+    const apiTitleRes = await getAPIdata('t', query)
+    if(apiTitleRes.Title)
+    getResults(apiTitleRes)
     }
-  if(res.Search){
-    getResults(res.Search)
-    setPreResults(res.Search)
+  if(apiSearchRes.Search){
+    getResults(apiSearchRes.Search)
+    setPreResults(apiSearchRes.Search)
     } 
   }
 

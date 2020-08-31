@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 
 // BOOTSTRAP IMPORTS
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -7,13 +7,9 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 
 
-// CONTEXT
-import ResultsContext from '../context/ResultsContext';
-
 function SearchBar(props) {
-    const [ query, setQuery ] = useState('')
+
     function handleChange(e){
-        setQuery(e.target.value)
         props.apiCall(e.target.value)
     }
     
