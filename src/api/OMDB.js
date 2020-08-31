@@ -1,11 +1,14 @@
 import Axios from 'axios';
 import apikey from './config';
 
-const getAPIdata = ( query ) => {
-    return Axios({
+const getAPIdata = async ( type, query ) => {
+    const api = await Axios({
         method: 'GET',
-        url: `http://www.omdbapi.com/?apikey=${apikey.omdb_key}&t=${query}`
+        url: `http://www.omdbapi.com/?apikey=${apikey.omdb_key}&${type}=${query}`
     })
+    
+    console.log(api.data)
+    return api.data
 }
 
 export default getAPIdata;
