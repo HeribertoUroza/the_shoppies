@@ -29,7 +29,13 @@ function ResultsSection() {
                 <h3>Results</h3>
                 <Container>
                     <ListGroup variant="flush">
-                        <ListGroup.Item>Cras justo odio</ListGroup.Item>
+                        {
+                            resultData.map((e,i) => {
+                                return (
+                                    <ListGroup.Item key={i}>{e.Title}</ListGroup.Item>
+                                )
+                            })
+                        }
                     </ListGroup>
                 </Container>
             </Jumbotron>
