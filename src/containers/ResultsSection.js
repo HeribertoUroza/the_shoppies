@@ -7,6 +7,7 @@ import ResultsContext from '../context/ResultsContext';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
 
 function ResultsSection() {
     let [ resultData, getResultData ] = useState([])
@@ -26,13 +27,17 @@ function ResultsSection() {
                 })
             } */}
             <Jumbotron fluid>
-                <h3>Results</h3>
                 <Container>
+                    <h3>Results</h3>
                     <ListGroup variant="flush">
                         {
                             resultData.map((e,i) => {
                                 return (
-                                    <ListGroup.Item key={i}>{e.Title}</ListGroup.Item>
+                                    <>
+                                        <ListGroup.Item key={i}>{e.Title}
+                                            <Button variant="outline-primary">Nominate</Button>
+                                        </ListGroup.Item>
+                                    </>
                                 )
                             })
                         }
