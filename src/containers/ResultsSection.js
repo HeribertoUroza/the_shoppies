@@ -9,10 +9,17 @@ import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 
-function ResultsSection() {
-    let [ resultData, getResultData ] = useState([])
+function ResultsSection(props) {
+    let [ resultData, getResultData ] = useState([]);
+    let [ nomiData, getNomiData ] = useState('');
+
     let currentResults = useContext(ResultsContext)
     
+    const handleNomination=(e)=>{
+        let selected = e.target.getAttribute('data-key');
+        
+        props.nominate(selected)
+    }
 
     useEffect(() => {
         getResultData(currentResults)
@@ -20,12 +27,6 @@ function ResultsSection() {
 
     return (
         <>
-            {/* Results
-            {
-                resultData.map((e, i) => {
-                    return <h3>{e.Title}</h3>
-                })
-            } */}
             <Jumbotron fluid>
                 <Container>
                     <h3>Results</h3>
@@ -33,11 +34,11 @@ function ResultsSection() {
                         {
                             resultData.map((e,i) => {
                                 return (
-                                    <>
-                                        <ListGroup.Item key={i}>{e.Title}
-                                            <Button variant="outline-primary">Nominate</Button>
-                                        </ListGroup.Item>
-                                    </>
+                                    
+                                    <ListGroup.Item key={i}>{e.Title}, ({e.Year})
+                                        <Button data-key={`${e.Title}, (${e.Year})`} variant="outline-primary" onClick={handleNomination}>Nominate</Button>
+                                    </ListGroup.Item>
+                                    
                                 )
                             })
                         }
