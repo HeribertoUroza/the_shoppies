@@ -6,3 +6,12 @@ body {
 .search-bar {
     margin-top: 2%;
 }
+
+/* NOMINATIONS COMPONENT */
+.menu-button {
+    margin-left: 58%;
+}
+
+.close-button {
+    margin-top: 10%;
+}

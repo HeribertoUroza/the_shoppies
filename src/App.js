@@ -16,12 +16,13 @@ import getAPIdata from './api/OMDB';
 // CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.css';
+import { Button } from 'react-bootstrap';
 
 function App() {
   const [ results, getResults ] = useState([]);
   const [ preResults, setPreResults] = useState([]);
   const [ nomiData, getNomiData ] = useState([]);
-  const [isMenuOpened, toggleMenu] = useState(true)
+  const [isMenuOpened, toggleMenu] = useState(false)
 
   const apiCall = async (query) => {  
     const apiSearchRes = await getAPIdata('s',query)
@@ -41,24 +42,32 @@ function App() {
     let data = [...nomiData]
     data.push(selected)
     getNomiData(data)
-    console.log(nomiData)
+  }
+
+  const handleMenuToggle = _=> {
+    if(!isMenuOpened){
+      toggleMenu(true)
+    } else {
+      toggleMenu(false)
+    }
   }
 
   return (
     <>
       <ResultsContext.Provider value={results}>
         <NomiContext.Provider value={nomiData}>
-          <SearchBar apiCall={apiCall} />         
-            <OffCanvas width={300}
+          <OffCanvas width={300}
               transitionDuration={300}
               effect={"parallax"}
               isMenuOpened={isMenuOpened}
-              position={"right"}>
+              position={"right"}>         
             <OffCanvasBody>
+              <SearchBar apiCall={apiCall} />
+              <Button variant="outline-primary" onClick={handleMenuToggle} className='menu-button' >View Nominations</Button>
               <ResultsSection nominate={handleNomination} />
             </OffCanvasBody>
             <OffCanvasMenu>
-              <NomiSection nomiData={nomiData} />
+              <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle}/>
             </OffCanvasMenu>
           </OffCanvas>
         </NomiContext.Provider>

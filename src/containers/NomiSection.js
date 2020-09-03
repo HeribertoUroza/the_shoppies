@@ -17,7 +17,6 @@ function NomiSection(props){
 
     useEffect(()=>{
         getNomiData(currentNominations)
-        console.log(currentNominations)
     }, [currentNominations])
 
     return (
@@ -27,15 +26,17 @@ function NomiSection(props){
                     <h3>Nominations</h3>
                     <ListGroup variant='flush'>
                         {
-                            currNomiData.map((e, i) => {
-                                return (
-                                    <ListGroup.Item key={i}>{e}
-                                        <Button variant="outline-primary" >Remove</Button>
-                                    </ListGroup.Item>
-                                ) 
-                            })
+                            currNomiData.length === 0 ? <ListGroup.Item>No Nominations Selected</ListGroup.Item>
+                                : currNomiData.map((e, i) => {
+                                    return (
+                                        <ListGroup.Item key={i}>{e}
+                                            <Button variant="outline-primary" >Remove</Button>
+                                        </ListGroup.Item>
+                                    )
+                                })
                         }            
                     </ListGroup>
+                    <Button onClick={props.closeBtn} className='close-button'>Close</Button>
                 </Container>
             </Jumbotron>
         </>

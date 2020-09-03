@@ -7,7 +7,6 @@ const getAPIdata = async ( type, query ) => {
         url: `http://www.omdbapi.com/?apikey=${apikey.omdb_key}&${type}=${query}`
     })
     
-    console.log(api.data)
     return api.data
 }
 
