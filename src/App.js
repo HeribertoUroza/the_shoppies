@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import SearchBar from './containers/SearchBar';
 import ResultsSection from './containers/ResultsSection';
 import NomiSection from './containers/NomiSection';
+import { OffCanvas, OffCanvasMenu, OffCanvasBody } from 'react-offcanvas';
 
 // CONTEXT
 import ResultsContext from './context/ResultsContext';
@@ -20,6 +21,7 @@ function App() {
   const [ results, getResults ] = useState([]);
   const [ preResults, setPreResults] = useState([]);
   const [ nomiData, getNomiData ] = useState([]);
+  const [isMenuOpened, toggleMenu] = useState(true)
 
   const apiCall = async (query) => {  
     const apiSearchRes = await getAPIdata('s',query)
@@ -46,9 +48,19 @@ function App() {
     <>
       <ResultsContext.Provider value={results}>
         <NomiContext.Provider value={nomiData}>
-          <SearchBar apiCall={apiCall} />
-          <ResultsSection nominate={handleNomination} />
-          <NomiSection nomiData={nomiData} />
+          <SearchBar apiCall={apiCall} />         
+            <OffCanvas width={300}
+              transitionDuration={300}
+              effect={"parallax"}
+              isMenuOpened={isMenuOpened}
+              position={"right"}>
+            <OffCanvasBody>
+              <ResultsSection nominate={handleNomination} />
+            </OffCanvasBody>
+            <OffCanvasMenu>
+              <NomiSection nomiData={nomiData} />
+            </OffCanvasMenu>
+          </OffCanvas>
         </NomiContext.Provider>
       </ResultsContext.Provider>
     </>
