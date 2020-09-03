@@ -11,13 +11,11 @@ import Button from 'react-bootstrap/Button';
 
 function ResultsSection(props) {
     let [ resultData, getResultData ] = useState([]);
-    let [ nomiData, getNomiData ] = useState('');
-
     let currentResults = useContext(ResultsContext)
     
     const handleNomination=(e)=>{
         let selected = e.target.getAttribute('data-key');
-        
+
         props.nominate(selected)
     }
 

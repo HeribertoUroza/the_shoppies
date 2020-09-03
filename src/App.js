@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 // CONTAINERS
 import SearchBar from './containers/SearchBar';
 import ResultsSection from './containers/ResultsSection';
+import NomiSection from './containers/NomiSection';
 
 // CONTEXT
 import ResultsContext from './context/ResultsContext';
@@ -35,15 +36,20 @@ function App() {
   }
 
   const handleNomination = (selected) => {
-    nomiData.push(selected)
+    let data = [...nomiData]
+    data.push(selected)
+    getNomiData(data)
     console.log(nomiData)
   }
 
   return (
     <>
       <ResultsContext.Provider value={results}>
-        <SearchBar apiCall={apiCall} />
-        <ResultsSection nominate={handleNomination}/>
+        <NomiContext.Provider value={nomiData}>
+          <SearchBar apiCall={apiCall} />
+          <ResultsSection nominate={handleNomination} />
+          <NomiSection nomiData={nomiData} />
+        </NomiContext.Provider>
       </ResultsContext.Provider>
     </>
   );
