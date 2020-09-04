@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import apikey from './config';
+//import apikey from './config';
 
 const getAPIdata = async ( type, query ) => {
     const api = await Axios({
