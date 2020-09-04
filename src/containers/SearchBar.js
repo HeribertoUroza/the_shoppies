@@ -14,7 +14,7 @@ function SearchBar(props) {
     }
     
     return (
-        <Jumbotron fluid>
+        <Jumbotron fluid className='search-container'>
             <Container>
                 <h1>The Shoppies</h1>
                 <Form inline>

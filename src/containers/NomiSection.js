@@ -30,7 +30,7 @@ function NomiSection(props){
                                 : currNomiData.map((e, i) => {
                                     return (
                                         <ListGroup.Item key={i}>{e}
-                                            <Button variant="outline-primary" >Remove</Button>
+                                            <Button variant="outline-primary" data-index={i} onClick={props.rmvNomi}>Remove</Button>
                                         </ListGroup.Item>
                                     )
                                 })

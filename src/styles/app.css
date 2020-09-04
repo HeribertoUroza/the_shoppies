@@ -3,6 +3,10 @@ body {
 }
 
 /* SEARCH BAR COMPONENT*/
+.search-container {
+    margin-bottom: 0rem;
+}
+
 .search-bar {
     margin-top: 2%;
 }
