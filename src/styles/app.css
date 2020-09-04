@@ -19,3 +19,12 @@ body {
 .close-button {
     margin-top: 10%;
 }
+
+/* TOAST NOTIFICATION */
+.toast-option {
+    position: absolute;
+    min-width: 100%;
+    font-size: 1.25rem;
+    z-index: 1000;
+    text-align: center;
+}
