@@ -16,13 +16,14 @@ import getAPIdata from './api/OMDB';
 // CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.css';
-import { Button } from 'react-bootstrap';
+import { Button, Toast } from 'react-bootstrap';
 
 function App() {
   const [ results, getResults ] = useState([]);
   const [ preResults, setPreResults] = useState([]);
   const [ nomiData, getNomiData ] = useState([]);
-  const [isMenuOpened, toggleMenu] = useState(false)
+  const [isMenuOpened, toggleMenu] = useState(false);
+  const [isToastOpened, toggleToast ] = useState(false);
 
   const apiCall = async (query) => {  
     const apiSearchRes = await getAPIdata('s',query)
@@ -40,7 +41,12 @@ function App() {
 
   const handleNomination = (selected) => {
     let data = [...nomiData]
-    data.push(selected)
+    if(data.length === 5){
+      toggleToast(true)
+    } else {
+      data.push(selected)
+      toggleToast(false)
+    }
     getNomiData(data)
   }
 
@@ -59,10 +65,17 @@ function App() {
     getNomiData(newNomiData)
   }
 
+  const handleToastToggle = _=> {
+    toggleToast(false)
+  }
+
   return (
     <>
       <ResultsContext.Provider value={results}>
         <NomiContext.Provider value={nomiData}>
+          <Toast show={isToastOpened} onClose={handleToastToggle} className='toast-option' autohide delay={3000}>
+            <Toast.Body>Oops, You Already Have 5 Nominations</Toast.Body>
+          </Toast>
           <OffCanvas width={300}
               transitionDuration={300}
               effect={"parallax"}
