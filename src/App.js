@@ -52,6 +52,13 @@ function App() {
     }
   }
 
+  const handleRemoveNomi = (e)=> {
+    let dataIndex = e.target.getAttribute('data-index')
+    let newNomiData = [...nomiData]
+    newNomiData.splice(dataIndex, 1);
+    getNomiData(newNomiData)
+  }
+
   return (
     <>
       <ResultsContext.Provider value={results}>
@@ -67,7 +74,7 @@ function App() {
               <ResultsSection nominate={handleNomination} />
             </OffCanvasBody>
             <OffCanvasMenu>
-              <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle}/>
+              <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle} rmvNomi={handleRemoveNomi}/>
             </OffCanvasMenu>
           </OffCanvas>
         </NomiContext.Provider>
