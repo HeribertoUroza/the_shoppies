@@ -22,8 +22,8 @@ function App() {
   const [ results, getResults ] = useState([]);
   const [ preResults, setPreResults] = useState([]);
   const [ nomiData, getNomiData ] = useState([]);
-  const [isMenuOpened, toggleMenu] = useState(false);
-  const [isToastOpened, toggleToast ] = useState(false);
+  const [ isMenuOpened, toggleMenu ] = useState(false);
+  const [ isToastOpened, toggleToast ] = useState(false);
 
   const apiCall = async (query) => {  
     const apiSearchRes = await getAPIdata('s',query)
@@ -69,6 +69,17 @@ function App() {
     toggleToast(false)
   }
 
+  const resultsAndNomiChecker = (e, selected) => {
+    let currResults = [...results]
+    let currNomi = [...nomiData]
+    //console.log(currResults, currNomi)
+    currResults.forEach((ele,i)=> {
+      if(selected.includes(ele.Title)){
+        e.target.setAttribute('disabled', 'disabled')
+      }
+    })
+  }
+
   return (
     <>
       <ResultsContext.Provider value={results}>
@@ -84,7 +95,7 @@ function App() {
             <OffCanvasBody>
               <SearchBar apiCall={apiCall} />
               <Button variant="outline-primary" onClick={handleMenuToggle} className='menu-button' >View Nominations</Button>
-              <ResultsSection nominate={handleNomination} />
+              <ResultsSection nominate={handleNomination} resultsAndNomiChecker={resultsAndNomiChecker} />
             </OffCanvasBody>
             <OffCanvasMenu>
               <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle} rmvNomi={handleRemoveNomi}/>
