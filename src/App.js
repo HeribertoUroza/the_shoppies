@@ -1,4 +1,4 @@
-import React, { useState, } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // CONTAINERS
 import SearchBar from './containers/SearchBar';
@@ -20,7 +20,7 @@ import { Button, Toast } from 'react-bootstrap';
 
 function App() {
   const [ results, getResults ] = useState([]);
-  const [ preResults, setPreResults] = useState([]);
+  const [ preResults, setPreResults ] = useState([]);
   const [ nomiData, getNomiData ] = useState([]);
   const [ isMenuOpened, toggleMenu ] = useState(false);
   const [ isToastOpened, toggleToast ] = useState(false);
@@ -47,6 +47,7 @@ function App() {
       data.push(selected) 
       toggleToast(false)
       e.target.setAttribute('disabled', 'disabled');
+      window.localStorage.setItem('nominations', data)
     }
     getNomiData(data)
   }
@@ -89,9 +90,19 @@ function App() {
   //   })
   // }
 
-  // useEffect(()=> {
-    
-  // },[])
+  useEffect(()=> {
+    const data = window.localStorage.getItem('nominations')
+    if(data){
+      let savedData = data.split(',')
+      let newNomiData = []
+      for (let i = 0; i < savedData.length; i++) {
+        if (i % 2 === 1) {
+          newNomiData.push(savedData[i - 1] + ',' + savedData[i])
+        }
+      }
+      getNomiData(newNomiData)
+    }
+  },[])
 
   return (
     <>
