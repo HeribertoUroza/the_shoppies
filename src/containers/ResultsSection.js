@@ -15,8 +15,7 @@ function ResultsSection(props) {
     
     const handleNomination=(e)=>{
         let selected = e.target.getAttribute('data-key');
-        e.target.setAttribute('disabled', 'disabled');
-        props.nominate(selected)
+        props.nominate(selected, e)
     }
 
     useEffect(() => {

@@ -39,13 +39,14 @@ function App() {
     } 
   }
 
-  const handleNomination = (selected) => {
+  const handleNomination = (selected, e) => {
     let data = [...nomiData]
     if(data.length === 5){
       toggleToast(true)
     } else {
       data.push(selected) 
       toggleToast(false)
+      e.target.setAttribute('disabled', 'disabled');
     }
     getNomiData(data)
   }
