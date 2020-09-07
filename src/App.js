@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // CONTAINERS
 import SearchBar from './containers/SearchBar';
@@ -44,7 +44,7 @@ function App() {
     if(data.length === 5){
       toggleToast(true)
     } else {
-      data.push(selected)
+      data.push(selected) 
       toggleToast(false)
     }
     getNomiData(data)
@@ -69,16 +69,28 @@ function App() {
     toggleToast(false)
   }
 
-  const resultsAndNomiChecker = (e, selected) => {
-    let currResults = [...results]
-    let currNomi = [...nomiData]
-    //console.log(currResults, currNomi)
-    currResults.forEach((ele,i)=> {
-      if(selected.includes(ele.Title)){
-        e.target.setAttribute('disabled', 'disabled')
-      }
-    })
-  }
+  // const resultsAndNomiChecker = (e, selected) => {
+  //   let currResults = [...results]
+  //   let currNomi = [...nomiData]
+  //   //console.log(currResults, currNomi)
+  //   currResults.forEach((ele,i)=> {
+  //     // if(selected.includes(ele.Title)){
+  //     //   e.target.setAttribute('disabled', 'disabled')
+  //     // }
+  //     if(currNomi[i]){
+  //       if(currNomi[i].includes(ele.Title)){
+  //         e.target.setAttribute('disabled', 'disabled')
+  //       } else {
+  //         e.target.removeAttribute('disabled')
+  //       }
+  //     }
+      
+  //   })
+  // }
+
+  // useEffect(()=> {
+
+  // },[])
 
   return (
     <>
