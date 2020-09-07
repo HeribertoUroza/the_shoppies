@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 
 // CONTAINERS
 import SearchBar from './containers/SearchBar';
@@ -89,7 +89,7 @@ function App() {
   // }
 
   // useEffect(()=> {
-
+    
   // },[])
 
   return (
@@ -107,7 +107,7 @@ function App() {
             <OffCanvasBody>
               <SearchBar apiCall={apiCall} />
               <Button variant="outline-primary" onClick={handleMenuToggle} className='menu-button' >View Nominations</Button>
-              <ResultsSection nominate={handleNomination} resultsAndNomiChecker={resultsAndNomiChecker} />
+              <ResultsSection nominate={handleNomination}  />
             </OffCanvasBody>
             <OffCanvasMenu>
               <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle} rmvNomi={handleRemoveNomi}/>
