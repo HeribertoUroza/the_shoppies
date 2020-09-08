@@ -113,7 +113,7 @@ function App() {
                   <ResultsSection nominate={handleNomination} />
                 </OffCanvasBody>
                 <OffCanvasMenu>
-                  <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle} rmvNomi={handleRemoveNomi} />
+                  <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle} rmvNomi={handleRemoveNomi} win_width={windowWidth}/>
                 </OffCanvasMenu>
               </OffCanvas>
             </NomiContext.Provider>
@@ -127,7 +127,7 @@ function App() {
               </Toast>
               <SearchBar apiCall={apiCall} />
               <ResultsSection nominate={handleNomination} />
-                <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle} rmvNomi={handleRemoveNomi} win_width={windowWidth}/>
+              <NomiSection nomiData={nomiData} closeBtn={handleMenuToggle} rmvNomi={handleRemoveNomi} win_width={windowWidth}/>
             </NomiContext.Provider>
           </ResultsContext.Provider>
           </div>
