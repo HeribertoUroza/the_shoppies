@@ -11,6 +11,12 @@ body {
     margin-top: 2%;
 }
 
+/* RESULTS COMPONENT */
+/* .list-group-item {
+    display: grid;
+    grid-template-columns: 70% 30%;
+} */
+
 /* NOMINATIONS COMPONENT */
 .menu-button {
     margin-left: 58%;
@@ -27,4 +33,53 @@ body {
     font-size: 1.25rem;
     z-index: 1000;
     text-align: center;
+}
+
+/* DESKTOP LAYOUT */
+@media (min-width: 768px) {
+    body {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .list-group-item {
+        display: grid;
+        grid-template-columns: 70% 30%;
+    }
+
+    .main-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 30% 70%;
+        grid-template-areas:  
+        "search search"
+        "results nomi";
+        gap: 0rem 1rem;
+    }
+
+    .search-container {
+        grid-area: search;
+        margin-bottom: 2rem;
+    }
+    
+    .search-bar {
+        padding-right: 25%
+    }
+
+    .results-container {
+        grid-area: results;
+       
+    }
+
+    .nomi-container {
+        grid-area: nomi;
+        
+    }
+
+    .toast-option {
+        top:30%;
+        min-width: 40%;
+    }
+
+
 }
