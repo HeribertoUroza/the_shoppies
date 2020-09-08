@@ -14,6 +14,11 @@ Remove a nominee from the nomination list
 
 More Info: [Link to Challenge](https://docs.google.com/document/d/1AZO0BZwn1Aogj4f3PDNe1mhq8pKsXZxtrG--EIbP_-w/edit#heading=h.v5qbt6acwgbo)
 
+### Mobile View
+![](./public/assets/MobileView.gif)
+
+### Desktop View
+![](./public/assets/DesktopView.gif)
 
 ---
 
