@@ -24,12 +24,12 @@ function ResultsSection(props) {
 
     return (
         <>
-            <Jumbotron fluid>
+            <Jumbotron fluid className='results-container' >
                 <Container>
                     <h3>Results</h3>
                     <ListGroup variant="flush">
                         {
-                            resultData.map((e,i) => {
+                            resultData.length !== 0 ? resultData.map((e,i) => {
                                 return (
                                     
                                     <ListGroup.Item key={i}>{e.Title}, ({e.Year})
@@ -37,7 +37,8 @@ function ResultsSection(props) {
                                     </ListGroup.Item>
                                     
                                 )
-                            })
+                            }) : 
+                                <ListGroup.Item>Search Above To Nominate Your Favorite Movie!</ListGroup.Item>
                         }
                     </ListGroup>
                 </Container>
