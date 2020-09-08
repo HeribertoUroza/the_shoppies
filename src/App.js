@@ -33,6 +33,10 @@ function App() {
   });
 
   const apiCall = async (query) => {
+    if(query.length === 0){
+      getResults([])
+    }
+    
     const apiSearchRes = await getAPIdata('s', query)
 
     if ((preResults.length > 0 && preResults === apiSearchRes.Search)) {
