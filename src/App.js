@@ -36,7 +36,7 @@ function App() {
     if(query.length === 0){
       getResults([])
     }
-    
+
     const apiSearchRes = await getAPIdata('s', query)
 
     if ((preResults.length > 0 && preResults === apiSearchRes.Search)) {
@@ -75,6 +75,7 @@ function App() {
     let dataIndex = e.target.getAttribute('data-index')
     let newNomiData = [...nomiData]
     newNomiData.splice(dataIndex, 1);
+    window.localStorage.setItem('nominations', newNomiData)
     getNomiData(newNomiData)
   }
 
